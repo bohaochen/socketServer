@@ -89,7 +89,7 @@ io.on('connection', function (socket) {
     
 });
 
-server.listen(3010, '120.77.152.150', function (err) {
+server.listen(3010, '127.0.0.1', function (err) {
     if (err) {
         return console.log(err);
     }
