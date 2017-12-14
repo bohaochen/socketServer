@@ -58,7 +58,11 @@ io.on('connection', function (socket) {
         socket.emit('people', {
             roomArray: roomArray[room],
             room: room,
-        })
+        });
+        socket.to(room).broadcast.emit('people', {
+            roomArray: roomArray[room],
+            room: room
+        });
 
         if (index==0){
             index=1
