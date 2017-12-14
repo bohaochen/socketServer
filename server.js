@@ -89,9 +89,9 @@ io.on('connection', function (socket) {
     
 });
 
-server.listen(3010, '0.0.0.0', function (err) {
+server.listen(8080, '0.0.0.0', function (err) {
     if (err) {
         return console.log(err);
     }
-    console.log('Listening at http://0.0.0.0:3010');
+    console.log('Listening at http://0.0.0.0:8080');
 });
