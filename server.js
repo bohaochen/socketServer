@@ -84,7 +84,6 @@ io.on('connection', function (socket) {
             roomArray: roomArray[matchRoom],
             room: matchRoom
         })
-        console.log(roomArray)
     })
     
 });
