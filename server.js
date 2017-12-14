@@ -39,6 +39,7 @@ io.on('connection', function (socket) {
     socket.on('room', function (data) {
         //加入房间
         console.log("new connected:" + JSON.stringify(data)+"room=="+room);
+        var time = (new Date()).getTime();
         socket.join(room); 
         var userData = [];
         userData.push(data)
@@ -58,10 +59,12 @@ io.on('connection', function (socket) {
         socket.emit('people', {
             roomArray: roomArray[room],
             room: room,
+            nowTime: time
         });
         socket.to(room).broadcast.emit('people', {
             roomArray: roomArray[room],
-            room: room
+            room: room,
+            nowTime: time
         });
 
         if (index==0){
@@ -79,14 +82,17 @@ io.on('connection', function (socket) {
 
     socket.on('matchTo',function(data){
         var matchRoom = data.room;
+        var time = (new Date()).getTime();
         roomArray[matchRoom][data.index].isOk = data.isOk;
         socket.emit('people', {
             roomArray: roomArray[matchRoom],
-            room: matchRoom
+            room: matchRoom,
+            nowTime: time
         })
         socket.to(data.room).broadcast.emit('people', {
             roomArray: roomArray[matchRoom],
-            room: matchRoom
+            room: matchRoom,
+            nowTime: time
         })
     })
     
